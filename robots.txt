@@ -1,0 +1,1 @@
+Sitemap: /projetokube-site/sitemap.xml

@@ -1,0 +1,260 @@
+[
+	
+	{
+	  "title"    : "Como adicionar um vídeo num post do blog",
+	  "category" : "tutoriais",
+	  "tags"     : " site, tutoriais",
+	  "url"      : "/projetokube-site/blog/2019/11/19/adicionar-video-no-post.html",
+	  "date"     : "19/11/2019",
+	  "excerpt"  : "É possível incluir mais de um vídeo em um post/página do site. Para tanto, use o código abaixo no local que deseja que o vídeo apareça.\n\n---\nlayout: post-blog\n... restante do texto não mostrado no trecho ...\n---\n\n{% include widget/youtube.html vid...",
+	"content"  : "É possível incluir mais de um vídeo em um post/página do site. Para tanto, use o código abaixo no local que deseja que o vídeo apareça.\n\n---\nlayout: post-blog\n... restante do texto não mostrado no trecho ...\n---\n\n{% include widget/youtube.html video_id=&#39;ID do vídeo&#39; %}\n\n\n\nO resultado é:\n\n\n\t\n\n\n"
+  } ,
+	
+	{
+	  "title"    : "Como criar uma publicação no blog",
+	  "category" : "tutoriais",
+	  "tags"     : " site, tutoriais",
+	  "url"      : "/projetokube-site/blog/2019/11/11/como-criar-uma-publicacao-no-blog.html",
+	  "date"     : "11/11/2019",
+	  "excerpt"  : "A inclusão de um item de blog no site é bastante simples. Para tanto faça:\n\n\n  \n    Crie um arquivo na pasta _post com a seguinte formatação de nome ano-mes-dia-titulo-da-publicacao-sem-acentuacao.md;\n\n    \n      veja alguns exemplos\n\n      \n     ...",
+	"content"  : "A inclusão de um item de blog no site é bastante simples. Para tanto faça:\n\n\n  \n    Crie um arquivo na pasta _post com a seguinte formatação de nome ano-mes-dia-titulo-da-publicacao-sem-acentuacao.md;\n\n    \n      veja alguns exemplos\n\n      \n        2019-11-01-acesso-lab-pesquisa.md\n        2019-11-11-configuracao-deploy-site.md\n      \n    \n  \n  \n    Coloque o código abaixo no arquivo gerado;\n\n     ---\n layout: post-blog # Existem dois layouts para publicações que você pode utilizar [post-blog e post]\n date: &#39;11 November 2019&#39; # Data da publicação\n title: &#39;Como implantar o site do Projeto Kube&#39; # Titulo da publicação\n subtitle: &#39;Configurando o Travis CI para criar e implantar o site usando o github&#39; \n tags: [site, deploy, Travis CI] # Palavras chaves para a publicação\n author-id: [ reinan ] # Nomes dos autores que está em _data/authors.yml\n feature-img: assets/img/blog/github-projetokube-site.png # Imagem da publicação opcional\n category: linux # Se for colocar uma categoria certifique se que ela também foi criada em _category ( A categoria é opcional )\n excerpt_separator: &amp;lt;!--more--&amp;gt;\n toc: true # ou false/remover a linha\n show_social: false # ou remova para exibir os botões de widget social.\n ---\n\n Algum texto de exemplo. Ele também poderá ter uma URL para outro [item do blog]( /projetokube-site/blog/2019/11/01/acesso-lab-pesquisa.html).\n\n &amp;lt;!--more--&amp;gt;\n\n ... restante do texto não mostrado no trecho ...\n    \n  \n  Altere os valores conforme a sua necessidade; e\n  Escreva seu texto;\n  Realize o commit e o pull;\n  Teste a sua modificação :D\n\n"
+  } ,
+	
+	{
+	  "title"    : "Como implantar o site do Projeto Kube",
+	  "category" : "tutoriais",
+	  "tags"     : " site, deploy, Travis CI, tutoriais",
+	  "url"      : "/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html",
+	  "date"     : "11/11/2019",
+	  "excerpt"  : "O site do Projeto Kube foi desenvolvido com o Jekyll e está hospedado no Github. Entretanto, como utilizamos plugins que não são confiáveis para o Github, é necessário fazer uso do Travis para realizar a compilação e instalação do site.\n\n\n\nNeste p...",
+	"content"  : "O site do Projeto Kube foi desenvolvido com o Jekyll e está hospedado no Github. Entretanto, como utilizamos plugins que não são confiáveis para o Github, é necessário fazer uso do Travis para realizar a compilação e instalação do site.\n\n\n\nNeste post iremos abordar os seguintes tópicos:\n\n  Instalação\n  Arquivos do projeto\n  Configurações do projeto    \n      Como criar uma publicação no blog?\n      Como adicionar vídeos a uma publicação?\n      Comentários\n      Configurando o Travis CI para criar e implantar o site\n      Links e considerações\n    \n  \n\n\n\n\nInstalação\n\n\n  \n    Instale o Jekyll: gem install jekyll;\n  \n  \n    Instale o bundle: gem install bundle\n  \n  \n    Faça o fork e clone de Projetokube-site\n\n     git clone https://github.com/{ Seu usuário do GitHub }/projetokube-site.git\n    \n  \n  \n    Instale as dependências do projeto: bundle install\n  \n  \n    Modifique o _config.yml para seu fork\n\n    \n      baseurl significa que o seu site está em uma subpasta. Como ele é executado como um projeto para o Github, é necessário que este parâmetro seja alterado.\n    \n\n     baseurl: &quot;/projetokube-site&quot;\n url: #\n    \n  \n  \n    Execute o servidor Jekyll jekyll serve\n  \n  \n    Personalize o seu projeto ou ajude a resolver alguns de nossos problemas.\n  \n\n\nArquivos do projeto\n\n├── _draft # Para armazenar seus rascunhos, eles não serão publicados em seu site\n├── _data # Arquivos de configurações que podem ser acessados em qualquer lugar do site\n|  ├── authors.yml # Todos os membros da equipe ficam armazenados aqui\n├── _includes # Modelos que podem ser incluídos no projeto\n├── _layouts # layouts de temas (veja abaixo para detalhes)\n├── _portfolio # coleção de artigos a ser preenchida na página do portfólio\n├── _posts # Postagens do blog\n├── _sass # Sass parciais \n├── assets\n|  ├── js # Arquivos javascript, Katex, jquery, bootstrap, jekyll search, \n|  ├── css # Arquivos de estilos como Bootstrap, font-awesome, katex and main css\n|  ├── fonts # Font-Awesome, e outras fontes\n|  └── img # Imagens usadas para modelos\n├── pages\n|   ├── 404.md # Página que é exibida quando o URL estiver errada\n|   ├── about.md # Sobre a página da equipe\n|   ├── gallery.md # Página da galeria para fotos do projeto\n|   ├── portfolio.md # Página de portfólio para projetos\n|   ├── search.html # Página de pesquisa\n|   └── tags.md # A página de tags\n├── _config.yml # Configuração do site em geral\n└── index.html # amostra da página inicial\n└── .travis # Arquivo de configuração do Travis\n\n\nConfigurações do projeto\n\nAs configurações do site estão no arquivo _config.yml. Utilize um editor de texto para alterar a maioria das configurações.\n\nComo criar uma publicação no blog?\n\nVeja o que publicamos sobre isso ;)\n\nComo adicionar vídeos a uma publicação?\n\nVeja o que publicamos sobre isso ;)\n\nComentários\n\nOs comentários que usamos nas publicações do blog do site são gerenciados pelo Disqus, que é uma plataforma para a aumentar o envolvimento nos seus sites e permite que as pessoas comentem no seu blog.\n\nAlém de oferecer um desempenho superior quando comparado ao outros sistemas, o Disqus garante outras vantagens para os nossos leitores. Uma delas é a possibilidade de cadastro por meio das redes sociais, como Facebook e Twitter. Porém, aqueles que preferirem também pode se registrar diretamente por meio do site do Disqus.\n\nPara ativar essa funcionalidade crie uma conta e coloque o seu identificador aqui:\n\ndisqus_shortname: &#39;projeto-kube&#39;\n\n\n\n  Antes de enviar o site para o Github é sempre bom baixar as atualizações do projeto original para que assim o nosso também sempre fique atualizado. Já pensou em fazer um pull request?\n\n  Caso você tenha dúvidas com comandos em Git veja essa publicação\n\n\ngit remote add upstream https://github.com/CBSIIFSLagarto/projetokube-site.git\ngit fetch upstream\ngit merge upstream/master\n\n\nConfigurando o Travis CI para criar e implantar o site\n\nDevemos criar uma conta no Travis CI para sincronizar nosso repositório GitHub com o Travis, então temos que procurar o repositório no Travis e depois clicar com o botão direito para ativar esse repositório.\n\n\n\nDepois disso precisamos adicionar um token do GitHub para o Travis CI para poder publicar o site gerado. Vá para Github Token e crie um token de acesso pessoal.\n\n\n\nDepois de gerar seu token, copie-o imediatamente, pois ele só estará disponível apenas quando é criado. Leve esse token copiado de volta à página de configurações no Travis CI, crie uma variável de ambiente chamada GITHUB_TOKEN, cole o token no campo value, verifique se “Exibir valor no log de criação” não está marcado e clique em Adicionar.\n\nO nosso arquivo do Travis irá realizar a implantação do site no Github quando um commit for realizado nos branches master e desenv. Entretanto, para que tudo isso ocorra, precisamos adicionar as seguintes variáveis de ambiente no Travis:\n\n\n  repo_deploy: Deverá ter como valor o repositório que irá hospedar o site em produção. Caso seja o mesmo repositório, informe usando o formato user/repositório.\n    \n      No nosso caso o valor informado é o projetokube/projetokube.github.io.\n    \n  \n  repo_deploy_target: repositório que irá receber os arquivos compilados do site. Como estamos hospedando o site de uma organização, o valor padrão é o master. Caso esteja utilizando um site pessoal, configure para gh-pages.\n  repo_deploy_branch: o repositório que irá disparar a implantação. No nosso caso é o master.\n\n\n\n  Caso tenha problema com a URL porque na compilação com a opção relative_url  ficava sem o domínio do site em todos os links ( CSS , JS e etc.. com isso as páginas não carregavam ) e com a opção absolute_url que pegava a configuração que está em _config.yml: \nurl: https://cbsiifslagarto.github.io/projetokube-site\ne substituir quando for compilado pelo travis-ci.\nIsso não é bem um erro mais eu penso que não é a melhor forma. Porém, foi a única maneira que encontrei para corrigir o erro que não estava carregando os CSS e JS.\n\n\nLinks e considerações\n\n\n  Colocando um site no ar com Jekyll: usando o terminal\n  Tecmundo: Explicando um pouco sobre o disqus\n  Github\n  Jekyll\n  Travis\n  Disqus\n\n\n"
+  } ,
+	
+	{
+	  "title"    : "O que é o git?",
+	  "category" : "git",
+	  "tags"     : " git, github",
+	  "url"      : "/projetokube-site/blog/2019/11/08/o-que-e-o-git.html",
+	  "date"     : "08/11/2019",
+	  "excerpt"  : "O que é Git\n\nGit é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico de alterações no codigo dos nossos projeto e facilmente voltar para qualquer ponto para...",
+	"content"  : "O que é Git\n\nGit é um sistema open-source de controle de versão utilizado pela grande maioria dos desenvolvedores atualmente ele podemos criar todo o histórico de alterações no codigo dos nossos projeto e facilmente voltar para qualquer ponto para saber como o código estava em determinada data.\nAlém disso o git nos ajudaa muito a controlar o fluxo de novas funcionalidades entre vários desenvolvedores no mesmo projeto com ferramentas para análise e resolução de conflitos quando o mesmo arquivo é editado por mais de uma pessoa em funcionalidades diferentes\n\ncomo utilizar o git\nCrie um a pasta vazia e abra o git bash e em seguida digite o comando git init com isso voçê cria um repositório git dentro da pasta vazia .Dentro dessa pasta vai ficar todos os arquivos do seu projeto onde sera possível utlilizar o serviço de controle de versão através dos comandos git tanto para voltar para uma versão anterior como para retornar para versões mais recentes\n\ncomandos basicos do git e suas funcionalidades\n\n  Git status\n  Git init\n  Git commit\n  Git add\n  Git add*\n  Git log\n  Git checkout \n  Git diff\n  Git pull\n  Git push\n  Git reset head\n\n\nGit status : mostra o status atual do repositório git caso tenha algo para adicionar ao repositório ele mostra.\n\nGit init : usado para iniciar um repositório git .\n\nGit add :  usado para adicionar um arquivo a um repositório git.\n\nGit add* : usado para adicionar vários arquivos a um repositório git de uma só vez.\n\nGit commit : esse comando serve para  apos você fazer um git add comentar algo para quando você estiver em uma outra versão e queira voltar para determinada versão você consegue identificar a versão devido ao comentário.\n\nGit log : usado para mostrar todas alterações que foi feitas nos arquivos.\n\nGit checkout : utilizado para voltar ou retornar para a versão que voçê quer do seu projeto.Digitanto git log  vai listar todas suas versões é só copiar a numeração da versão e colar na frente do comando git checkout e apertar enter para voltar para aquela versão caso queira retornar para a última versão do seu projeto digite git checkout master.\n\nGit push : usado para enviar um projeto para um lugar remoto um exemplo seria enviar um projeto para o github\n\nGit pull : usado quando tem mais de uma pessoa trabalhando em um mesmo projeto onde após  usado para baixar a diferença do seu projeto para o que está em um local remoto para isso usa-se o comando git pullpois todos da equipe tem que está atualizado de como esta o projeto para a partir  disso implentar mais coisas\n\n"
+  } ,
+	
+	{
+	  "title"    : "No final das contas: o que é o Docker e como ele funciona?",
+	  "category" : "devops",
+	  "tags"     : " docker, devops",
+	  "url"      : "/projetokube-site/blog/2019/11/08/exemplo-no-final-das-contas-o-que-e-o-docker-e-como-ele-funciona.html",
+	  "date"     : "08/11/2019",
+	  "excerpt"  : "Para ter acesso ao laboratório de pesquisa é necessário fazer o cadastro no formulário eletrônico disponibilizado aqui ou através do link encurtado http://abre.ai/labpesquisacbsicoinf.\n\nDesta forma qualquer professor da CBSI/COINF poderá entregar ...",
+	"content"  : "Para ter acesso ao laboratório de pesquisa é necessário fazer o cadastro no formulário eletrônico disponibilizado aqui ou através do link encurtado http://abre.ai/labpesquisacbsicoinf.\n\nDesta forma qualquer professor da CBSI/COINF poderá entregar as chaves de acesso às instalações.\n\nNeste link também consta a lista dos alunos que já estão cadastrados, permitindo que vocês possam gerenciar quem pode ou não permanecer no laboratório.\n"
+  } ,
+	
+	{
+	  "title"    : "Instalação do Script do Raspberry no Windows",
+	  "category" : "devops",
+	  "tags"     : " docker, devops, raspberry, windows",
+	  "url"      : "/projetokube-site/blog/2019/11/08/exemplo-instalacao-do-script-do-raspberry-no-windows.html",
+	  "date"     : "08/11/2019",
+	  "excerpt"  : "Instruções Para Instalação do Script do Raspberry no Windows\n\n\n  baixar Pibakery\n  Formatar o cartão de memória no formato NTF\n  Montar os script da forma desejada no pibakery\n  Baixar iso do raspberry neste link\nOu usar a isso que já vem padrão n...",
+	"content"  : "Instruções Para Instalação do Script do Raspberry no Windows\n\n\n  baixar Pibakery\n  Formatar o cartão de memória no formato NTF\n  Montar os script da forma desejada no pibakery\n  Baixar iso do raspberry neste link\nOu usar a isso que já vem padrão no pibakery\n  Caso tenha escolhido outra isso além da padrão disponibilizada, terá que anexar a imagem no diretório do pibakery no seguinte endereço C:\\Program Files (x86)\\PiBakery\\resources\\app\\os\nE renomear a iso dependendo da versão full/lite.\n\n\nEx: caso a iso seja versão full, renomei no diretório da seguinte forma\n\n\n\nEx: caso a iso seja versão lite, renomei no diretório da seguinte forma\n\n\n"
+  } ,
+	
+	{
+	  "title"    : "Execução de containers Docker com Raspberry Pi",
+	  "category" : "linux",
+	  "tags"     : " raspberry, docker",
+	  "url"      : "/projetokube-site/blog/2019/11/01/exemplo-containers-docker-com-raspberry-pi.html",
+	  "date"     : "01/11/2019",
+	  "excerpt"  : "Para ter acesso ao laboratório de pesquisa é necessário fazer o cadastro no formulário eletrônico disponibilizado aqui ou através do link encurtado http://abre.ai/labpesquisacbsicoinf.\n\nDesta forma qualquer professor da CBSI/COINF poderá entregar ...",
+	"content"  : "Para ter acesso ao laboratório de pesquisa é necessário fazer o cadastro no formulário eletrônico disponibilizado aqui ou através do link encurtado http://abre.ai/labpesquisacbsicoinf.\n\nDesta forma qualquer professor da CBSI/COINF poderá entregar as chaves de acesso às instalações.\n\nNeste link também consta a lista dos alunos que já estão cadastrados, permitindo que vocês possam gerenciar quem pode ou não permanecer no laboratório.\n"
+  } ,
+	
+	{
+	  "title"    : "Acesso ao laboratório de pesquisa",
+	  "category" : "acessolaboratório",
+	  "tags"     : " acesso, laboratório pesquisa",
+	  "url"      : "/projetokube-site/blog/2019/11/01/acesso-lab-pesquisa.html",
+	  "date"     : "01/11/2019",
+	  "excerpt"  : "Para ter acesso ao laboratório de pesquisa é necessário fazer o cadastro no formulário eletrônico disponibilizado aqui ou através do link encurtado http://abre.ai/labpesquisacbsicoinf.\n\nDesta forma qualquer professor da CBSI/COINF poderá entregar ...",
+	"content"  : "Para ter acesso ao laboratório de pesquisa é necessário fazer o cadastro no formulário eletrônico disponibilizado aqui ou através do link encurtado http://abre.ai/labpesquisacbsicoinf.\n\nDesta forma qualquer professor da CBSI/COINF poderá entregar as chaves de acesso às instalações.\n\nNeste link também consta a lista dos alunos que já estão cadastrados, permitindo que vocês possam gerenciar quem pode ou não permanecer no laboratório.\n"
+  } 
+	
+  
+	,
+	
+	{
+	
+	"title"    : "Angry Pirds",
+	"category" : "",
+	"tags"     : " cluster, raspberry, k8s, k3s, AngryPirds",
+	"url"      : "/projetokube-site/projetos/2019-11-05-angrypirds",
+	"date"     : "01/11/2019",
+	"excerpt"  : "\n\n\n\n\n  \n  \n  \n  \n  \n  \n\nO projeto Angry Pirds tem como objetivo simular uma infraestrutura completa para a execução de tarefas de DevOps em um cluster. Além disso, pode ser utilizado em aulas práticas e feiras (exposição), por ser portátil e tudo ...",
+	"content"  : "\n\n\n\n\n  \n  \n  \n  \n  \n  \n\nO projeto Angry Pirds tem como objetivo simular uma infraestrutura completa para a execução de tarefas de DevOps em um cluster. Além disso, pode ser utilizado em aulas práticas e feiras (exposição), por ser portátil e tudo em um, necessitando apenas conectá-lo na rede elétrica.\n\nObjetivos\n\nPrimário\n\n\n  Oferecer um ambiente completo para a execução e/ou estudos de tarefas DevOps.\n\n\nSecundários\n\n\n  Proporcionar um ambiente de estudo para computação em nuvem para os alunos da CBSI;\n  Possuir um ambiente para demonstração de tarefas realizadas que envolvem a cultura DevOps;\n  Estimular a pesquisa em virtualização baseada em contêineres e orquestração de serviços;\n  Permitir troca rápida de ambiente alterando o sistema de armazenamento (cartões de memória).\n\n\nCaracterísticas\n\nO projeto deverá atender as seguintes características:\n\n\n  Suportar pelo menos três Raspberry PI 3 B+ ou superior;\n  Possuir uma única fonte de alimentação;\n  Ser leve;\n  Poder ser transportado facilmente;\n  Rápida instalação e configuração;\n  Possuir um switch/roteador para conexão dos nós;\n  Possuir um dispositivo de saída;\n  Suportar um teclado;\n  Permitir a conexão de outras máquinas;\n  Permitir acessar a internet, quando disponível.\n\n\nSistemas disponíveis\n\nO sistema operacional base escolhido para ser utilizado no Raspberry é o Raspbian Stretch Lite instalado com a ferramenta PINN e habilitado com:\n\n\n  Docker: para a execução de contêineres;\n  Compose: Para a instanciação de mais de um conjunto de contêineres;\n  Swarm: Orquestrador alternativo para, utilizado em tarefas mais básicas como demonstração e testes de aplicativos de alunos;\n  K3S: Orquestrador leve e principal;\n  K8S: Orquestrador alternativo para a simulação de cluster com alta disponibilidade.\n\n"
+	
+  } ,
+	
+	{
+	
+	"title"    : "Projeto Orquestração de Contêineres",
+	"category" : "",
+	"tags"     : " cluster, raspberry, k8s, k3s",
+	"url"      : "/projetokube-site/projetos/2019-11-05-k8snacbsi",
+	"date"     : "01/11/2019",
+	"excerpt"  : "Projeto Orquestração de Contêineres\n\nO projeto visa contribuir com um dos grades desafios em pesquisa de SI para o período de 2016 à 2026, mapeados pelos pesquisadores em SI, através da exploração do desafio que envolve “Complexidade de Sistemas d...",
+	"content"  : "Projeto Orquestração de Contêineres\n\nO projeto visa contribuir com um dos grades desafios em pesquisa de SI para o período de 2016 à 2026, mapeados pelos pesquisadores em SI, através da exploração do desafio que envolve “Complexidade de Sistemas de Informação” (BOSCARIOLI; ARAÚJO; MACIEL, 2017), mais precisamente no tocante as perspectivas na adoção da computação em nuvem no cenário brasileiro.\n\nAlém disso irá contribuir na formação dos alunos do curso de computação para trabalharem com tecnologias em nuvem (cloud) e orquestração de contêineres em ambientes de alta disponibilidade com vistas as demandas do mercado nos próximos anos (CARNEIRO; PAULA, 2017).\n\nPor fim, o presente trabalho ajudará a comunidade regional e acadêmica a superar os desafios da computação em nuvem proporcionando um modelo de ambiente de alta disponibilidade para ser executado em laboratórios de informática, de cursos de computação, que faz uso da orquestração da execução de softwares e serviços em contêineres.\n\nObjetivos\n\nGeral\n\nElaborar um modelo de ambiente de alta disponibilidade para ser utilizado durante as aulas teóricas e práticas do curso de sistemas de informação através da orquestração da execução de softwares/serviços em contêineres.\n\nObjetivos Específicos\n\nPara atender o objetivo proposto do trabalho definidos os seguintes objetivos específicos:\n\n\n  Mapear  ambientes/ferramentas  que  proporcionam  alta  disponibilidade  de aplicações utilizadas em sistemas computacionais;\n  Levantamento de ambientes que proporcionem a orquestração de serviços;\n  Mapear o conhecimento do corpo docente e discente do curso a respeito dos conceitos de alta disponibilidade e de orquestração de softwares e/ou serviços;\n  Identificar disciplinas pertencentes ao curso de sistemas de informação, do Campus Lagarto, que permitem fazer uso da plataforma de virtualização em contêineres de forma distribuída através da orquestração;\n  Elaborar manual básico sobre a construção e a configuração de um ambiente que promova alta disponibilidade através da orquestração da execução de softwares/serviços em contêineres.\n\n\nPrazo\n\n\n  De: 01/2019 até 11/2019.\n\n\nResultados esperados\n\nEspera-se que este projeto contribua ofertando um modelo de ambiente de alta disponibilidade para ser utilizado durante as aulas teóricas e práticas do curso de sistemas de informação através da orquestração da execução de softwares/serviços em contêineres.\n\nEste projeto também favorecerá a distribuição e execução dos softwares criados pelos alunos do curso de sistemas de informação do Instituto Federal de Sergipe - Campus Lagarto, principalmente aqueles que foram elaborados com vistas ao cumprimento das atividades propostas pelas disciplinas mais avançadas, como o Trabalho de Conclusão de Curso (TCC), e que necessitam de um ambiente com grande capacidade computacional.\n\nAlém disso, contribuirá com a comunidade de pesquisa de SI na resolução do desafio proposto por Carneiro e Paula (2017), ao permitir que futuros trabalhadores na área de tecnologia de informação (alunos do IFS) possam ter uma visão de como funciona um ambiente de alta disponibilidade desde o início da sua formação.\n\nPor fim, este projeto irá contribuir significativamente para uma formação de maior qualidade dos alunos envolvidos no projeto, que devem estar matriculados no curso de sistemas de informação, por apresentar e trabalhar com conteúdos que não estão elencados no PPC.\n\nAgradecimentos\n\n\n\n\n\n\n  \n  \n  \n\n"
+	
+  } ,
+	
+	{
+	
+	"title"    : "Cluster Denis",
+	"category" : "",
+	"tags"     : " cluster, denis, k8s",
+	"url"      : "/projetokube-site/projetos/9999-11-05-denis",
+	"date"     : "01/11/2019",
+	"excerpt"  : "O que é\n\nO Denis é uma iniciativa para a construção de um cluster beowulf, que faz uso do sistema operacional CentOS.\n\nTem como objetivo executar tarefas e sistemas construídos pelos dos alunos, bem como auxiliar na execução de pesquisas científic...",
+	"content"  : "O que é\n\nO Denis é uma iniciativa para a construção de um cluster beowulf, que faz uso do sistema operacional CentOS.\n\nTem como objetivo executar tarefas e sistemas construídos pelos dos alunos, bem como auxiliar na execução de pesquisas científicas que necessitam de computação distribuída.\n\nAtualmente conta com 20 máquinas e está em processo de manutenção/atualização para suportar o Kubernetes.\n\n\n\n\n\n\n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n\nHistória\n\nApós a troca dos computadores de dois laboratórios de pesquisa, o prof. Wilhelm conseguiu reunir alguns alunos como Keven e Alex e deu início a árdua tarefa de recuperar as máquinas obsoletas e que seriam destinadas para leilão com a ajuda do pessoal da CTI/Lagarto.\n\nCapacidade de processamento e armazenamento\n\nSistemas suportados\n\nAtualmente possibilita a execução de aplicativos que foram criados ou que podem ser implantados em ambientes como:\n\n\n  Docker\n  Kubernetes\n\n"
+	
+  } 
+	
+  
+
+  
+
+  ,
+  
+  {
+  
+  "title"    : "Blog",
+  "category" : "",
+  "tags"     : " blog, notícias, tutoriais, artigos",
+  "url"      : "/projetokube-site/blog/",
+  "date"     : "",
+  "excerpt"  : "\n\n    \n    \n        \n        \n\n\n            \n            \n\n\n    \n    \n        tutoriaisComo adicionar um vídeo num post do blog  \n            \n                reinan e outros\n\nTerça feira\n  \n19 de \nNovembro\n  \n de 2019\n\n\n            \n\n            ...",
+  "content"  : "\n\n    \n    \n        \n        \n\n\n            \n            \n\n\n    \n    \n        tutoriaisComo adicionar um vídeo num post do blog  \n            \n                reinan e outros\n\nTerça feira\n  \n19 de \nNovembro\n  \n de 2019\n\n\n            \n\n            \n                \n\n\n    \n    \n        tutoriaisComo criar uma publicação no blog  \n            \n                reinan e outros\n\nSegunda feira\n  \n11 de \nNovembro\n  \n de 2019\n\n\n\n\n    \n    \n        tutoriaisComo implantar o site do Projeto Kube  \n            \n                reinan e outros\n\nSegunda feira\n  \n11 de \nNovembro\n  \n de 2019\n\n\n            \n\n        \n    \n    \n\n\n\n    \n        \n            \n                \n                \n\n                    \n                        \n                            Últimas publicações\n                        \n                    \n                    \n                    \n                    \n                    \n                    \n                    \n\n\n    \n    \n        gitO que é o git?  \n            \n                gabriel \n\nSexta feira\n  \n8 de \nNovembro\n  \n de 2019\n\n\n                    \n\n\n    \n    \n        devopsNo final das contas: o que é o Docker e como ele funciona?  \n            \n                frchico e outros\n\nSexta feira\n  \n8 de \nNovembro\n  \n de 2019\n\n\n                    \n\n\n    \n    \n        devopsInstalação do Script do Raspberry no Windows  \n            \n                frchico e outros\n\nSexta feira\n  \n8 de \nNovembro\n  \n de 2019\n\n\n                    \n\n                    \n                        \n                            Carregar todas as publicações\n                        \n                    \n                    \n                    \n                    \n                        \n                            acesso\n                        \n                    \n\n                    \n                    \n                    \n\n\n    \n    \n        acessoAcesso ao laboratório de pesquisa  \n            \n                 e outros\n\nSexta feira\n  \n1 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n                    \n                    \n                    \n                        \n                            laboratório\n                        \n                    \n\n                    \n                    \n                    \n\n\n    \n    \n        acessoAcesso ao laboratório de pesquisa  \n            \n                 e outros\n\nSexta feira\n  \n1 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n                    \n                    \n                    \n                        \n                            linux\n                        \n                    \n\n                    \n                    \n                    \n\n\n    \n    \n        linuxExecução de containers Docker com Raspberry Pi  \n            \n                frchico \n\nSexta feira\n  \n1 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n                    \n                    \n                    \n                        \n                            devops\n                        \n                    \n\n                    \n                    \n                    \n\n\n    \n    \n        devopsNo final das contas: o que é o Docker e como ele funciona?  \n            \n                frchico e outros\n\nSexta feira\n  \n8 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n\n\n    \n    \n        devopsInstalação do Script do Raspberry no Windows  \n            \n                frchico e outros\n\nSexta feira\n  \n8 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n                    \n                    \n                    \n                        \n                            git\n                        \n                    \n\n                    \n                    \n                    \n\n\n    \n    \n        gitO que é o git?  \n            \n                gabriel \n\nSexta feira\n  \n8 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n                    \n                    \n                    \n                        \n                            tutoriais\n                        \n                    \n\n                    \n                    \n                    \n\n\n    \n    \n        tutoriaisComo adicionar um vídeo num post do blog  \n            \n                reinan e outros\n\nTerça feira\n  \n19 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n\n\n    \n    \n        tutoriaisComo criar uma publicação no blog  \n            \n                reinan e outros\n\nSegunda feira\n  \n11 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n\n\n    \n    \n        tutoriaisComo implantar o site do Projeto Kube  \n            \n                reinan e outros\n\nSegunda feira\n  \n11 de \nNovembro\n  \n de 2019\n\n\n                    \n                    \n                    \n                \n                \n            \n            \n\n\n\n\n\n\n\n\n\n\n\n\n    \n        Categorias\n    \n    \n        \t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\n            acesso 1\n            \t\t\t\n\t\t\t\t\t\n\t\t\t\n\n            laboratório 1\n            \t\t\t\n\t\t\t\t\t\n\t\t\t\n\n            linux 1\n            \t\t\t\n\t\t\t\t\t\n\t\t\t\n\n            devops 2\n            \t\t\t\n\t\t\t\t\t\n\t\t\t\n\n            git 1\n            \t\t\t\n\t\t\t\t\t\n\t\t\t\n\n            tutoriais 3\n            \n        \n    \n\n\n\n\n\n    \n        Postagens recentes\n    \n    \n    \n\n\n    \n    \n        tutoriaisComo adicionar um vídeo num post do blog\n\n\n\n\n    \n    \n        tutoriaisComo criar uma publicação no blog\n\n\n\n\n    \n    \n        tutoriaisComo implantar o site do Projeto Kube\n\n\n\n\n    \n    \n        gitO que é o git?\n\n\n\n\n    \n    \n        devopsNo final das contas: o que é o Docker e como ele funciona?\n\n\n\n\n    \n    \n        devopsInstalação do Script do Raspberry no Windows\n\n\n\n\n    \n    \n        linuxExecução de containers Docker com Raspberry Pi\n\n\n\n\n    \n    \n        acessoAcesso ao laboratório de pesquisa\n\n\n\n\n        \n    \n\n"
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+  "title"    : "Quem Somos",
+  "category" : "",
+  "tags"     : " equipe, professor, aluno, pesquisador, como participar",
+  "url"      : "/projetokube-site/equipe/",
+  "date"     : "",
+  "excerpt"  : "A equipe do Projeto Kube é multidisciplinar e composta por alunos e professores do curso de bacharelado em sistemas de informação e de técnico (modalidade integrado) de redes de computadores do IFS - Campus Lagarto.\n\nComo participar\n\nEstamos abert...",
+  "content"  : "A equipe do Projeto Kube é multidisciplinar e composta por alunos e professores do curso de bacharelado em sistemas de informação e de técnico (modalidade integrado) de redes de computadores do IFS - Campus Lagarto.\n\nComo participar\n\nEstamos abertos para qualquer um que esteja disposto a aprender e/ou colaborar com o projeto.\n\nSe você se identifica com as nossas linhas de pesquisa/trabalho ou só quer conhecer como trabalhamos, não perca tempo! Fale conosco.\n\nMembros\n\nProfessores\n\n\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tAlfredo Vieira\n\t\t\t\t\tProfessor\n\t\t\t\t\t\n\t\t\t\t\t&quot;Nenhuma informação foi adicionada sobre esse participante!&quot;\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Alfredo Vieira&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesAté o momento nenhuma informação foi adicionada sobre Alfredo Vieira\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tFrancisco Rodrigues\n\t\t\t\t\tCoordenador\n\t\t\t\t\t\n\t\t\t\t\tUm caba cheio de ideias.\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Francisco Rodrigues&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformações- Mestre em Sistemas e Computação com graduação em Sistemas de Informações. - Atualmente sou professor no Instituto Federal de Sergipe(IFS) pertencente ao curso de sistemas de informação no Campus Lagarto em Sergipe.\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tRubens Matos\n\t\t\t\t\tProfessor\n\t\t\t\t\t\n\t\t\t\t\t&quot;Nenhuma informação foi adicionada sobre esse participante!&quot;\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Rubens Matos&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesAté o momento nenhuma informação foi adicionada sobre Rubens Matos\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tWilhelm Rodrigues\n\t\t\t\t\tProfessor\n\t\t\t\t\t\n\t\t\t\t\t&quot;Nenhuma informação foi adicionada sobre esse participante!&quot;\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Wilhelm Rodrigues&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesAté o momento nenhuma informação foi adicionada sobre Wilhelm Rodrigues\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\n\t\n\n\nAlunos\n\n\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tAlex Santos Chaves\n\t\t\t\t\tEstudante\n\t\t\t\t\t\n\t\t\t\t\tDiscente em Sistemas de Informação.\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Alex Santos Chaves&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesSou apaixonado por natureza e tecnologia, gosto de compartilhar conhecimento e de aprender ao longo da vida.\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tFrancisco Junio Santos Chaves\n\t\t\t\t\tEstudante - Bolsista\n\t\t\t\t\t\n\t\t\t\t\tEstudante de TI, apaixonado por tecnologia!\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Francisco Junio Santos Chaves&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesEstudante cada dia mais apaixonado por tecnologia. Sempre em busca de conhecimento.\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tJean Carlos M. Oliveira\n\t\t\t\t\tEstudante\n\t\t\t\t\t\n\t\t\t\t\t&quot;Nenhuma informação foi adicionada sobre esse participante!&quot;\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Jean Carlos M. Oliveira&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesLamborghini Mercy Your chick she so thirsty I&#39;m in that two seat Lambo\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tJosé Gabriel da Costa Santos\n\t\t\t\t\tEstudante\n\t\t\t\t\t\n\t\t\t\t\tfascinado pelo mundo da tecnologia e estou a cada dia em busca de mais conhecimento\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;José Gabriel da Costa Santos&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesestudante de BSI cada dia mais apaixonado pelo mundo das tecnologias uma das principais coisas que chamou a minha atenção foi o mundo dos jogos\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tReinan Gabriel dos Santos Souza\n\t\t\t\t\tEstudante\n\t\t\t\t\t\n\t\t\t\t\tOlá meu nome é Reinan Gabriel, sou discente em Sistemas de Informação pelo Instituto Federal de Sergipe.\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t Mais informações\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t\t\n\t\t\t\n\t\t\t\t&quot;Reinan Gabriel dos Santos Souza&quot;\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\tInformaçõesOlá meu nome é Reinan Gabriel, sou discente em Sistemas de Informação pelo Instituto Federal de Sergipe. Minha paixão é por tecnologia e sempre dedico meu tempo livre a me aventurar por conta entre novas tecnologias\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t Volta\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t \n\t \n \n\t\t\t        \n\t\t\n\t\n\n"
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+  "title"    : "Laboratório",
+  "category" : "",
+  "tags"     : " ",
+  "url"      : "/projetokube-site/laboratorio/",
+  "date"     : "",
+  "excerpt"  : "O Projeto Kube ainda não possui um laboratório exclusivo de trabalho, entretanto, faz uso de recursos que estão compartilhados no Laboratório de Pesquisa da Coordenadoria de Sistemas de Informação.\n\nAlém do laboratório de pesquisa, é possível util...",
+  "content"  : "O Projeto Kube ainda não possui um laboratório exclusivo de trabalho, entretanto, faz uso de recursos que estão compartilhados no Laboratório de Pesquisa da Coordenadoria de Sistemas de Informação.\n\nAlém do laboratório de pesquisa, é possível utilizar a infraestrutura do curso de SI para ministrar cursos ou realizar experimentos.\n\n\n\n\n\n\n  \n  \n  \n\nEquipamentos disponíveis\n\n\n  Dez (10) máquinas para uso em pesquisa compartilhadas com os alunos de SI;\n  Uma (1) máquina exclusiva para conexão com os servidores existentes no laboratório\n  Cluster Denis;\n  Raspberrys PI 3 B+;\n  Mini-rack Angry *Pirdis* com Raspberry PI 3 B+;\n  Impressora 3D.\n\n\nLocalização\n\nO laboratório de pesquisa está localizado no bloco da CBSI do Campus Lagarto do Instituto Federal de Sergipe, na cidade de Lagarto/SE (no centro sul de Sergipe).\n\n"
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+  "title"    : "Projetos",
+  "category" : "",
+  "tags"     : " Archive",
+  "url"      : "/projetokube-site/Projetos/",
+  "date"     : "",
+  "excerpt"  : "\n\n\n    \n    \n        \n            \n                \n                    \n                \n            \n            \n        \n    \n    \n    \n        \n            \n                \n                    \n                \n            \n            \n    ...",
+  "content"  : "\n\n\n    \n    \n        \n            \n                \n                    \n                \n            \n            \n        \n    \n    \n    \n        \n            \n                \n                    \n                \n            \n            \n        \n    \n    \n    \n        \n            \n                \n                    \n                \n            \n            \n        \n    \n    \n\n"
+  
+} ,
+  
+  {
+  
+  "title"    : "Regras",
+  "category" : "",
+  "tags"     : " Regras",
+  "url"      : "/projetokube-site/regras/",
+  "date"     : "",
+  "excerpt"  : "Se você já é usuário de grupos de tecnologia já deve estar ciente da maioria das regras. Devido o rápido crescimento do grupo, usei como base as regras do grupo gnulinuxbrasil para criar a nossa versão 0. De qualquer forma é importante ler tudo, o...",
+  "content"  : "Se você já é usuário de grupos de tecnologia já deve estar ciente da maioria das regras. Devido o rápido crescimento do grupo, usei como base as regras do grupo gnulinuxbrasil para criar a nossa versão 0. De qualquer forma é importante ler tudo, ok!?\n\nA) Nossa regra mais elementar é: leia todas as regras e orientações. Não aceitamos questionamentos acerca das regras, e nem argumentos do tipo “Eu não tinha visto isso”. Se você não concorda com algum item, deixe o chat para quem concorda.\n\nB) O foco deste chat é falar dos temas que estamos pesquisando, a saber DevOps e Orquestração de serviços/sistemas. Bem como atividades gerais relacionadas ao curso de sistemas de informação.\n\nC) Para ter acesso ao laboratório de pesquisa é necessário realizar o cadastro no sistema do laboratório.\n\nC) Não é permitido:\n\n🚫 chamar os admins do grupo em conversa privada;\n\n🚫 mensagens em caixa alta (texto escrito em letras maiúsculas);\n\n🚫 palavrões, termos pejorativos, ofensas, trollagem, perseguição pessoal ou desrespeito a membros do grupo;\n\n🚫 depreciar empresas de tecnologia, fabricantes ou profissionais da área;\n\n🚫 flood (envio massivo de mensagens e/ou mídias no chat);\n\n🚫 correntes, brincadeiras, pegadinhas, piadas ou jogos de qualquer natureza exceto a conteúdos relacionados a tecnologia;\n\n🚫 fotos ou vídeos com montagens que possam causar confusão em leigos;\n\n🚫 disseminação de hoax (boatos) sem a devida checagem dos fatos;\n\n🚫 material contendo sexo, nudez, sugestão ou apelo erótico;\n\n🚫 qualquer forma de discriminação ou preconceito social, racial, étnico ou sexual;\n\n🚫 apologia a drogas, violência ou atos ilícitos, incluindo pirataria de softwares;\n\n🚫 links para páginas com golpes (phishing) ou malwares (vírus);\n\n🚫 publicidade de terceiros;\n\n🚫 proselitismo religioso ou ideológico;\n\n🚫 propaganda, discussão e/ou referências de cunho político.\n\nD) Tenha cuidado ao enviar mídias direto ao grupo: os usuários são responsáveis pelo conteúdo, inclusive se contiver os itens proibidos na Regra C. Dê sempre preferência para links, evitando trafegar arquivos de forma desnecessária no chat. Materiais inéditos são bem-vindos, mas não devem conter imagens de mortos, feridos, sangue ou indícios de mutilação.\n\n\n  \n    Quando entrar no grupo ou Telegram, devo me apresentar aos demais membros?\n\n    Não. Também não é necessário os tradicionais “Bom dia”, “Boa tarde”, “Boa noite”\n  \n  \n    Devo recepcionar os novos membros?\nNão é necessário.\n  \n  \n    Se você tem uma dúvida ou quer fazer uma colocação: vá direto ao assunto.\nNós apreciamos e valorizamos a boa educação, mas em um chat com tantos usuários pular cumprimentos é uma questão prática.\n  \n  \n    Posso escrever picado (fragmentado)?\nPor favor: evite isso! Em espaços adultos e sérios é muito desagradável receber várias notificações à toa, com 2 ou mais mensagens que poderiam estar em 1 só. Procure colocar o seu raciocínio em uma mensagem ampla, com início, meio e fim. Se necessário separar linhas para melhor clareza e compreensão, recorra à velha e boa quebra-de-linha:\n\n    📱 Mobile: tecla ↩️\n 💻 Desktop: teclas CTRL + ENTER\n  \n  \n    Quais idiomas são aceitos no chat?\n\n    A língua principal deste chat é o português. Porém inglês é a língua universal.\n  \n  \n    Preciso escrever em português perfeito?\n\n    Não. Mas isso também não significa que pode escrever em português ininteligível.\n  \n  \n    Posso editar ou apagar mensagens já enviadas no chat?\n\n    Sim. Encorajamos que isso seja feito para evitar correção em nova mensagem:\n\n    \n      📱 Mobile: toque curto sobre a mensagem + Editar (ou Apagar)\n      💻 Desktop: botão direito do mouse sobre a mensagem + Editar (ou Apagar)\n    \n  \n  \n    Como responder a uma mensagem específica no chat?\n\n    \n      📱 Mobile: toque curto sobre a mensagem + Responder\n \t- 💻 Desktop: botão esquerdo do mouse sobre a mensagem + Responder\n    \n  \n  \n    Outro usuário fez uma pergunta no grupo — posso responder\n\n    Sim, aqui nós incentivamos, mas tente sempre responder com o máximo de certeza.\n  \n  \n    Posso enviar mensagens privadas?\n  \n\n\n\n  \n    MENSAGEM PRIVADA AOS MEMBROS\n\n    ✔️ Permitido, com ressalvas. Não temos como controlar conversas privadas entre usuários, PORÉM se um membro reportar aos admins que foi assediado, xingado ou importunado por alguém isso vai resultar em banimento do usuário.\n  \n  \n    MENSAGEM PRIVADA AOS ADMINS\n✖️ Proibido. Exceções: a) quando o contato for solicitado em privado por um admin ou moderador; ou, b) quando um membro quiser relatar situação de assédio, xingamento, ameaça ou incômodo recebidos em privado e não quiser se expor no grupo (IMPORTANTE: nesse caso é necessário enviar screenshot da conversa onde ocorreu o problema).\n  \n\n\n\n  \n    Como reporto um problema técnico no Telegram, no chat ou algo que requer atenção dos administradores?\n\n    Coloque @admin no início da mensagem e descreva o problema de forma objetiva. Todos os administradores serão notificados simultaneamente. O primeiro admin que ler vai acusar ciência e verificar a questão.\n\n    \n      ⚠️ IMPORTANTE: esse recurso não deve ser usado para perguntas gerais ou para dúvidas de menor urgência.\n    \n  \n  \n    Como denuncio um comentário ou comportamento inadequado no chat?\n\n    Responda ao comentário específico utilizando apenas @admin na resposta. Todos os administradores serão notificados simultaneamente. O primeiro admin que ler vai tomar as providências cabíveis.\n  \n  \n    Posso usar a ferramenta de busca no histórico do chat?\n\n    Sim, deve. Isso evita a duplicação de links já postados e permite que assuntos sejam desenvolvidos aproveitando-se o que já foi dito, em vez de recomeçar tudo do zero.\n  \n  \n    Que tipo de mídias não são aceitas no grupo?\n  \n\n\n\n  MÍDIAS PROIBIDAS\n✖️ Games\n✖️ Contatos\n\n\n\n  \n    É melhor enviar mídia ou link?\n\n    Link, sempre. Se o vídeo ou foto já está hospedado na web (especialmente no YouTube), não faz o menor sentido ficar trafegando arquivos em vão no grupo. Além disso, na internet geralmente a mídia está acompanhada de informações relevantes a respeito do evento — como equipamento envolvido, data, local, circunstância, autor da imagem, etc. Isso evita perguntas básicas que todos vão fazer.\n  \n  \n    Como silencio o grupo?\n\n    Acesse o menu do grupo e escolha Silenciar notificações. As opções são: 1 hora, 8 horas, 2 dias ou desativado (permanente).\n  \n  \n    Quero convidar amigos para o grupo, como procedo?\n\n    Peça para em contato com @frchico ;)\n  \n\n\nPara as demais sugestões/dúvidas, falar com @frchico\n"
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+  "title"    : "Encontrar no site",
+  "category" : "",
+  "tags"     : " ",
+  "url"      : "/projetokube-site/search/",
+  "date"     : "",
+  "excerpt"  : "",
+  "content"  : ""
+  
+} ,
+  
+  {
+  
+  "title"    : "Tags",
+  "category" : "",
+  "tags"     : " ",
+  "url"      : "/projetokube-site/tags/",
+  "date"     : "",
+  "excerpt"  : "",
+  "content"  : ""
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+} ,
+  
+  {
+  
+} 
+  
+]

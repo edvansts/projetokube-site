@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/projetokube-site/assets/css/main.css">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/projetokube-site/assets/favicon.ico" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="Projeto Kube" href="/projetokube-site/feed.xml"/>
+    
+    
+
+    <!-- KaTeX 0.8.3 -->
+    <!-- if you have any issue check https://github.com/KaTeX/KaTeX -->
+    
+    <script src="/projetokube-site/assets/js/vendor/katex.min.js"></script>
+    
+
+    <!-- Google Analytics -->
+     <!-- End Google Analytics -->
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Como implantar o site do Projeto Kube | Projeto Kube</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Como implantar o site do Projeto Kube" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="O site do Projeto Kube foi desenvolvido com o Jekyll e está hospedado no Github. Entretanto, como utilizamos plugins que não são confiáveis para o Github, é necessário fazer uso do Travis para realizar a compilação e instalação do site." />
+<meta property="og:description" content="O site do Projeto Kube foi desenvolvido com o Jekyll e está hospedado no Github. Entretanto, como utilizamos plugins que não são confiáveis para o Github, é necessário fazer uso do Travis para realizar a compilação e instalação do site." />
+<meta property="og:site_name" content="Projeto Kube" />
+<meta property="og:image" content="/projetokube-site/assets/img/projetokube.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-11T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"O site do Projeto Kube foi desenvolvido com o Jekyll e está hospedado no Github. Entretanto, como utilizamos plugins que não são confiáveis para o Github, é necessário fazer uso do Travis para realizar a compilação e instalação do site.","headline":"Como implantar o site do Projeto Kube","dateModified":"2019-11-11T00:00:00+00:00","datePublished":"2019-11-11T00:00:00+00:00","@type":"BlogPosting","image":"/projetokube-site/assets/img/projetokube.png","url":"/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html","mainEntityOfPage":{"@type":"WebPage","@id":"/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+    <!--
+    <title>Como implantar o site do Projeto Kube | Projeto Kube</title>
+    <meta name="description" content="O site do Projeto Kube foi desenvolvido com o Jekyll e está hospedado no Github. Entretanto, como utilizamos plugins que não são confiáveis para o Github, é ...">
+	-->
+	<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+
+</head>
+
+  <body>
+    <header class="site-header">
+    <!-- Logo and title -->
+	<div class="branding">
+        
+		<a href="/projetokube-site/">
+			<img alt="logo img" class="avatar" src="/projetokube-site/assets/img/projetokube.png" />
+		</a>
+        
+
+		<h1 class="site-title">
+			<a aria-label="Projeto Kube" href="/projetokube-site/">
+        Projeto Kube
+      </a>
+		</h1>
+	</div>
+
+    <!-- Toggle menu -->
+    <nav class="clear">
+    <a aria-label="pull" id="pull" class="toggle" href="#">
+    <i class="fa fa-bars fa-lg"></i>
+    </a>
+
+    <!-- Menu -->
+    <ul class="hide">
+        
+
+        
+        
+            <li class="separator"> | </li> 
+            <li>
+                <a class="clear" aria-label="Blog" title="Blog" href="/projetokube-site/blog/">
+                     Blog 
+                </a>
+            </li>
+            
+        
+        
+            <li class="separator"> | </li> 
+            <li>
+                <a class="clear" aria-label="Quem Somos" title="Quem Somos" href="/projetokube-site/equipe/">
+                     Quem Somos 
+                </a>
+            </li>
+            
+        
+        
+        
+        
+            <li class="separator"> | </li> 
+            <li>
+                <a class="clear" aria-label="Laboratório" title="Laboratório" href="/projetokube-site/laboratorio/">
+                     Laboratório 
+                </a>
+            </li>
+            
+        
+        
+            <li class="separator"> | </li> 
+            <li>
+                <a class="clear" aria-label="Projetos" title="Projetos" href="/projetokube-site/Projetos/">
+                     Projetos 
+                </a>
+            </li>
+            
+        
+            <li class="separator"> | </li> 
+            <li>
+                <a class="clear" aria-label="Regras" title="Regras" href="/projetokube-site/regras/">
+                     Regras 
+                </a>
+            </li>
+            
+        
+        
+            <li class="separator"> | </li> 
+            <li>
+                <a class="clear" aria-label="Encontrar no site" title="Encontrar no site" href="/projetokube-site/search/">
+                     <i class="fa fa-search" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+        
+            <li class="separator"> | </li> 
+            <li>
+                <a class="clear" aria-label="Tags" title="Tags" href="/projetokube-site/tags/">
+                     <i class="fa fa-tags" aria-hidden="true"></i>
+                    
+                </a>
+            </li>
+            
+        
+        
+        
+        
+        
+    </ul>
+
+	</nav>
+</header>
+
+    <div class="content">
+      <style>.site-header { float: initial !important; }</style>
+<!--  PAGE HEADER  -->
+<div class="page-header">
+    <div class="page-header-bg"style="background-image: url('/projetokube-site/assets/img/blog/github-projetokube-site.png'); background-position: 0% 0%;"data-stellar-background-ratio="0.5"></div>
+    <div class="container"><div class="row">
+            <div class="col-md-10">
+                <div class="post-category"><a href="/projetokube-site/category/tutoriais">tutoriais</a></div>
+                <h1>Como implantar o site do Projeto Kube</h1>
+                <ul class="post-meta"><li><a href="/projetokube-site/equipe#reinan">reinan</a><li><a href="/projetokube-site/equipe#frchico">frchico</a></li>
+                    <li>
+
+Segunda feira
+  
+11 de 
+Novembro
+  
+ de 2019</li></ul>
+            </div>
+        </div></div>
+</div><div class="section section-blog">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- post share -->
+                <div class="section-row">
+                    <div class="post-share">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html&quote=Como+implantar+o+site+do+Projeto+Kube" class="social-facebook"><i class="fa fa-facebook"></i><span>Compartilhar</span></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?source=http:///projetokube-site/blog/2019/11/11/configuracao-deploy-site.html&text=Como+implantar+o+site+do+Projeto+Kube: http:///projetokube-site/blog/2019/11/11/configuracao-deploy-site.html" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http:///projetokube-site/blog/2019/11/11/configuracao-deploy-site.html&media=/projetokube-site/assets/img/blog/github-projetokube-site.png&description=%3Cp%3EO+site+do+Projeto+Kube+foi+desenvolvido+com+o+%3Ca+href%3D%22https%3A%2F%2Fjekyllrb.com%2F..." class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
+                        <a target="_blank" href="mailto:?subject=Como implantar o site do Projeto Kube&body=O site do Projeto Kube foi desenvolvido com o Jekyll e está hospedado no Github. Entretanto, como utilizamos plugins que não são confiáveis para o Github, é necessário fazer uso do Travis para realizar a compilação e instalação do site.
+
+
+
+Neste post iremos abordar os seguinte...:http:///projetokube-site/blog/2019/11/11/configuracao-deploy-site.html"><i class="fa fa-envelope"></i><span>Email</span></a>
+                    </div>
+                </div>
+                <!-- /post share -->
+
+                <!-- post content -->
+                <div class="section-row post-content"><p>O site do Projeto Kube foi desenvolvido com o <a href="https://jekyllrb.com/">Jekyll</a> e está hospedado no <a href="https://pages.github.com/">Github</a>. Entretanto, como utilizamos <em>plugins</em> que não são confiáveis para o <a href="https://pages.github.com/">Github</a>, é necessário fazer uso do <a href="https://travis-ci.com/">Travis</a> para realizar a compilação e instalação do site.</p>
+
+<!--more-->
+
+<p>Neste post iremos abordar os seguintes tópicos:</p>
+<ul id="markdown-toc">
+  <li><a href="#instalação" id="markdown-toc-instalação">Instalação</a></li>
+  <li><a href="#arquivos-do-projeto" id="markdown-toc-arquivos-do-projeto">Arquivos do projeto</a></li>
+  <li><a href="#configurações-do-projeto" id="markdown-toc-configurações-do-projeto">Configurações do projeto</a>    <ul>
+      <li><a href="#como-criar-uma-publicação-no-blog" id="markdown-toc-como-criar-uma-publicação-no-blog">Como criar uma publicação no blog?</a></li>
+      <li><a href="#como-adicionar-vídeos-a-uma-publicação" id="markdown-toc-como-adicionar-vídeos-a-uma-publicação">Como adicionar vídeos a uma publicação?</a></li>
+      <li><a href="#comentários" id="markdown-toc-comentários">Comentários</a></li>
+      <li><a href="#configurando-o-travis-ci-para-criar-e-implantar-o-site" id="markdown-toc-configurando-o-travis-ci-para-criar-e-implantar-o-site">Configurando o Travis CI para criar e implantar o site</a></li>
+      <li><a href="#links-e-considerações" id="markdown-toc-links-e-considerações">Links e considerações</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="instalação">Instalação</h1>
+
+<ol>
+  <li>
+    <p>Instale o <a href="https://jekyllrb.com/docs/installation/">Jekyll</a>: <code class="highlighter-rouge">gem install jekyll</code>;</p>
+  </li>
+  <li>
+    <p>Instale o bundle: <code class="highlighter-rouge">gem install bundle</code></p>
+  </li>
+  <li>
+    <p>Faça o fork e clone de <a href="https://github.com/CBSIIFSLagarto/projetokube-site">Projetokube-site</a></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://github.com/{ Seu usuário do GitHub }/projetokube-site.git
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Instale as dependências do projeto: <code class="highlighter-rouge">bundle install</code></p>
+  </li>
+  <li>
+    <p>Modifique o <code class="highlighter-rouge">_config.yml</code> para seu fork</p>
+
+    <ul>
+      <li><em>baseurl</em> significa que o seu site está em uma subpasta. Como ele é executado como um projeto para o <a href="https://pages.github.com/">Github</a>, é necessário que este parâmetro seja alterado.</li>
+    </ul>
+
+    <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/projetokube-site"</span>
+ <span class="na">url</span><span class="pi">:</span> <span class="c1">#</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Execute o servidor Jekyll <code class="highlighter-rouge">jekyll serve</code></p>
+  </li>
+  <li>
+    <p>Personalize o seu projeto ou ajude a resolver alguns de <a href="https://github.com/CBSIIFSLagarto/projetokube-site/issues">nossos problemas</a>.</p>
+  </li>
+</ol>
+
+<h1 id="arquivos-do-projeto">Arquivos do projeto</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── _draft <span class="c"># Para armazenar seus rascunhos, eles não serão publicados em seu site</span>
+├── _data <span class="c"># Arquivos de configurações que podem ser acessados em qualquer lugar do site</span>
+|  ├── authors.yml <span class="c"># Todos os membros da equipe ficam armazenados aqui</span>
+├── _includes <span class="c"># Modelos que podem ser incluídos no projeto</span>
+├── _layouts <span class="c"># layouts de temas (veja abaixo para detalhes)</span>
+├── _portfolio <span class="c"># coleção de artigos a ser preenchida na página do portfólio</span>
+├── _posts <span class="c"># Postagens do blog</span>
+├── _sass <span class="c"># Sass parciais </span>
+├── assets
+|  ├── js <span class="c"># Arquivos javascript, Katex, jquery, bootstrap, jekyll search, </span>
+|  ├── css <span class="c"># Arquivos de estilos como Bootstrap, font-awesome, katex and main css</span>
+|  ├── fonts <span class="c"># Font-Awesome, e outras fontes</span>
+|  └── img <span class="c"># Imagens usadas para modelos</span>
+├── pages
+|   ├── 404.md <span class="c"># Página que é exibida quando o URL estiver errada</span>
+|   ├── about.md <span class="c"># Sobre a página da equipe</span>
+|   ├── gallery.md <span class="c"># Página da galeria para fotos do projeto</span>
+|   ├── portfolio.md <span class="c"># Página de portfólio para projetos</span>
+|   ├── search.html <span class="c"># Página de pesquisa</span>
+|   └── tags.md <span class="c"># A página de tags</span>
+├── _config.yml <span class="c"># Configuração do site em geral</span>
+└── index.html <span class="c"># amostra da página inicial</span>
+└── .travis <span class="c"># Arquivo de configuração do Travis</span>
+</code></pre></div></div>
+
+<h1 id="configurações-do-projeto">Configurações do projeto</h1>
+
+<p>As configurações do site estão no arquivo <code class="highlighter-rouge">_config.yml</code>. Utilize um editor de texto para alterar a maioria das configurações.</p>
+
+<h2 id="como-criar-uma-publicação-no-blog">Como criar uma publicação no blog?</h2>
+
+<p><a href="/projetokube-site/blog/2019/11/11/como-criar-uma-publicacao-no-blog.html">Veja o que publicamos sobre isso ;)</a></p>
+
+<h2 id="como-adicionar-vídeos-a-uma-publicação">Como adicionar vídeos a uma publicação?</h2>
+
+<p><a href="/projetokube-site/blog/2019/11/19/adicionar-video-no-post.html">Veja o que publicamos sobre isso ;)</a></p>
+
+<h2 id="comentários">Comentários</h2>
+
+<p>Os comentários que usamos nas publicações do blog do site são gerenciados pelo <a href="http://disqus.com/">Disqus</a>, que é uma plataforma para a aumentar o envolvimento nos seus sites e permite que as pessoas comentem no seu blog.</p>
+
+<p>Além de oferecer um desempenho superior quando comparado ao outros sistemas, o <a href="http://disqus.com/">Disqus</a> garante outras vantagens para os nossos leitores. Uma delas é a possibilidade de cadastro por meio das redes sociais, como Facebook e Twitter. Porém, aqueles que preferirem também pode se registrar diretamente por meio do site do <a href="http://disqus.com/">Disqus</a>.</p>
+
+<p>Para ativar essa funcionalidade crie uma conta e coloque o seu identificador aqui:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">disqus_shortname</span><span class="pi">:</span> <span class="s1">'</span><span class="s">projeto-kube'</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Antes de enviar o site para o <a href="https://pages.github.com/">Github</a> é sempre bom baixar as atualizações do projeto <a href="https://github.com/CBSIIFSLagarto/projetokube-site">original</a> para que assim o nosso também sempre fique atualizado. Já pensou em fazer um <em>pull request?</em></p>
+
+  <p>Caso você tenha dúvidas com comandos em Git <a href="/projetokube-site/blog/2019/11/08/o-que-e-o-git.html">veja essa publicação</a></p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream https://github.com/CBSIIFSLagarto/projetokube-site.git
+git fetch upstream
+git merge upstream/master
+</code></pre></div></div>
+
+<h2 id="configurando-o-travis-ci-para-criar-e-implantar-o-site">Configurando o Travis CI para criar e implantar o site</h2>
+
+<p>Devemos criar uma conta no <a href="https://travis-ci.com/">Travis</a> CI para sincronizar nosso repositório <a href="https://pages.github.com/">GitHub</a> com o <a href="https://travis-ci.com/">Travis</a>, então temos que procurar o repositório no <a href="https://travis-ci.com/">Travis</a> e depois clicar com o botão direito para ativar esse repositório.</p>
+
+<p><img src="https://miro.medium.com/max/1675/1*BwypOVhSR_DcGHRjrZI7BA.png" alt="Projeto" /></p>
+
+<p>Depois disso precisamos adicionar um <em>token</em> do GitHub para o Travis CI para poder publicar o site gerado. Vá para <a href="https://github.com/settings/tokens">Github Token</a> e crie um <em>token</em> de acesso pessoal.</p>
+
+<p><img src="https://miro.medium.com/max/2815/1*5fOAumDl3XCWD0h-Vhtfcw.png" alt="Projeto" /></p>
+
+<p>Depois de gerar seu <em>token</em>, copie-o imediatamente, pois ele só estará disponível apenas quando é criado. Leve esse <em>token</em> copiado de volta à página de configurações no Travis CI, crie uma variável de ambiente chamada <code class="highlighter-rouge">GITHUB_TOKEN</code>, cole o <em>token</em> no campo value, verifique se “Exibir valor no log de criação” não está marcado e clique em Adicionar.</p>
+
+<p>O nosso arquivo do <a href="https://travis-ci.com/">Travis</a> irá realizar a implantação do site no <a href="https://pages.github.com/">Github</a> quando um commit for realizado nos branches master e desenv. Entretanto, para que tudo isso ocorra, precisamos adicionar as seguintes variáveis de ambiente no <a href="https://travis-ci.com/">Travis</a>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">repo_deploy</code>: Deverá ter como valor o repositório que irá hospedar o site em produção. Caso seja o mesmo repositório, informe usando o formato user/repositório.
+    <ul>
+      <li>No nosso caso o valor informado é o <code class="highlighter-rouge">projetokube/projetokube.github.io</code>.</li>
+    </ul>
+  </li>
+  <li>repo_deploy_target: repositório que irá receber os arquivos compilados do site. Como estamos hospedando o site de uma organização, o valor padrão é o <code class="highlighter-rouge">master</code>. Caso esteja utilizando um site pessoal, configure para <code class="highlighter-rouge">gh-pages</code>.</li>
+  <li>repo_deploy_branch: o repositório que irá disparar a implantação. No nosso caso é o <code class="highlighter-rouge">master</code>.</li>
+</ul>
+
+<blockquote>
+  <p>Caso tenha problema com a <strong>URL</strong> porque na compilação com a opção <code class="highlighter-rouge">relative_url </code> ficava sem o domínio do site em todos os links ( <strong>CSS</strong> , <strong>JS</strong> e etc.. com isso as páginas não carregavam ) e com a opção <code class="highlighter-rouge">absolute_url</code> que pegava a configuração que está em <code class="highlighter-rouge">_config.yml</code>: 
+<code class="highlighter-rouge">url: https://cbsiifslagarto.github.io/projetokube-site</code>
+e substituir quando for compilado pelo travis-ci.
+Isso não é bem um erro mais eu penso que não é a melhor forma. Porém, foi a única maneira que encontrei para corrigir o erro que não estava carregando os <strong>CSS</strong> e <strong>JS</strong>.</p>
+</blockquote>
+
+<h2 id="links-e-considerações">Links e considerações</h2>
+
+<ul>
+  <li><a href="https://jtemporal.com/do-tema-ao-ar/">Colocando um site no ar com Jekyll: usando o terminal</a></li>
+  <li><a href="https://www.tecmundo.com.br/institucional/104360-novidade-comentarios-tecmundo-testando-o-disqus.htm">Tecmundo: Explicando um pouco sobre o disqus</a></li>
+  <li><a href="https://pages.github.com/">Github</a></li>
+  <li><a href="https://jekyllrb.com/">Jekyll</a></li>
+  <li><a href="https://travis-ci.com/">Travis</a></li>
+  <li><a href="http://disqus.com/">Disqus</a></li>
+</ul>
+
+</div>
+                <!-- /post content -->
+
+                <!-- post tags -->
+                <div class="section-row">
+                    <div class="post-tags">
+                        <!-- Tag list -->
+                        
+                        
+
+
+<footer>
+  <div class="tag-list">
+    
+      <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/projetokube-site/tags#Travis+CI">
+      <p><i class="fa fa-tag fa-fw"></i> Travis CI</p>
+    </a>
+    
+    <a class="button" href="/projetokube-site/tags#deploy">
+      <p><i class="fa fa-tag fa-fw"></i> deploy</p>
+    </a>
+    
+    <a class="button" href="/projetokube-site/tags#site">
+      <p><i class="fa fa-tag fa-fw"></i> site</p>
+    </a>
+    
+    <a class="button" href="/projetokube-site/tags#tutoriais">
+      <p><i class="fa fa-tag fa-fw"></i> tutoriais</p>
+    </a>
+    
+  </div>
+</footer>
+
+                    </div>
+                </div>
+                <!-- /post tags -->
+
+                <!-- post nav -->
+                <div class="section-row">
+
+                    
+
+                    
+
+                    
+
+
+                    <div class="post-nav">
+                        
+
+                        
+                    </div>
+                </div>
+                <!-- /post nav  -->
+
+                <!-- post author --><div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Sobre <a
+                                href="/projetokube-site/equipe#reinan">Reinan Gabriel dos Santos Souza</a>
+                        </h3>
+                    </div>
+                    <div class="author media">
+                        <div class="media-left">
+                            <a href="/projetokube-site/equipe#reinan">
+                                
+                                <img class="author-img media-object"
+                                    src="https://avatars3.githubusercontent.com/reinanhs?v=3&amp;s=273" />
+                                
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Olá meu nome é <b>Reinan Gabriel</b>, sou discente em Sistemas de Informação pelo <b>Instituto Federal de Sergipe</b>. <br>Minha paixão é por tecnologia e sempre dedico meu tempo livre a me aventurar por conta entre novas tecnologias</p>
+                            <ul class="author-social">
+                                
+                                <li><a target="_blank" href="http://fb.com/reinangabriel96"><i class="fa fa-facebook fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="http://github.com/reinanhs"><i class="fa fa-github fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="https://twitter.com/ReinanGabriel9"><i class="fa fa-twitter fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="https://instagram.com/reinanhs"><i class="fa fa-instagram fa-fw"></i></a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post author --><div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Sobre <a
+                                href="/projetokube-site/equipe#frchico">Francisco Rodrigues</a>
+                        </h3>
+                    </div>
+                    <div class="author media">
+                        <div class="media-left">
+                            <a href="/projetokube-site/equipe#frchico">
+                                
+                                <img class="author-img media-object"
+                                    src="https://avatars3.githubusercontent.com/frchico?v=3&amp;s=273" />
+                                
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>- Mestre em Sistemas e Computação com graduação em Sistemas de Informações. <br>- Atualmente sou professor no Instituto Federal de Sergipe(IFS) pertencente ao curso de sistemas de informação no Campus Lagarto em Sergipe.</p>
+                            <ul class="author-social">
+                                
+                                
+                                <li><a target="_blank" href="http://github.com/frchico"><i class="fa fa-github fa-fw"></i></a></li>
+                                
+                                
+                                <li><a target="_blank" href="https://twitter.com/frchico"><i class="fa fa-twitter fa-fw"></i></a></li>
+                                
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post author --><!-- /related post -->
+                <div>
+                    <div class="section-title">
+                        <h3 class="title">Posts Relacionados</h3>
+                    </div>
+                    <div class="row">
+                        <!-- post -->
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/19/adicionar-video-no-post.html"><img src="/projetokube-site/assets/img/blog/video.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/tutoriais">tutoriais</a></div><h3 class="post-title title-sm"><a href="/projetokube-site/blog/2019/11/19/adicionar-video-no-post.html">Como adicionar um vídeo num post do blog</a></h3><ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#reinan">reinan </a>e outros</li></ul></div>
+</div>
+<!-- /post --></div>
+                        
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/11/como-criar-uma-publicacao-no-blog.html"><img src="/projetokube-site/assets/img/blog/github-projetokube-site.png" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/tutoriais">tutoriais</a></div><h3 class="post-title title-sm"><a href="/projetokube-site/blog/2019/11/11/como-criar-uma-publicacao-no-blog.html">Como criar uma publicação no blog</a></h3><ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#reinan">reinan </a>e outros</li></ul></div>
+</div>
+<!-- /post --></div>
+                        
+                        <div class="col-md-4"><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-sm">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html"><img src="/projetokube-site/assets/img/blog/github-projetokube-site.png" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/tutoriais">tutoriais</a></div><h3 class="post-title title-sm"><a href="/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html">Como implantar o site do Projeto Kube</a></h3><ul class="post-meta">  
+            <li>
+                <a href="/projetokube-site/equipe#reinan">reinan </a>e outros</li></ul></div>
+</div>
+<!-- /post --></div>
+                        
+                        <!-- /post -->
+                    </div>
+                </div>
+                <!-- /related post -->
+
+                <!-- post comments -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Comentários</h3>
+                    </div>
+                    <div class="post-comments">
+                        <!-- Disqus -->
+                        
+                        <div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'projeto-kube';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view comments.</noscript>
+
+                        
+                    </div>
+                </div>
+                <!-- /post comments -->
+            </div>
+            <div class="col-lg-4 col-md-12">
+
+
+
+
+
+
+
+
+
+
+<!-- category widget -->
+<div class="aside-widget">
+    <div class="section-title">
+        <h2 class="title">Categorias</h2>
+    </div>
+    <div class="category-widget">
+        <ul>			
+						
+					
+			
+
+            <li><a href="/projetokube-site/category/acesso">acesso <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/category/laboratorio">laboratório <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/category/linux">linux <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/category/devops">devops <span>2</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/category/git">git <span>1</span></a></li>
+            			
+					
+			
+
+            <li><a href="/projetokube-site/category/tutoriais">tutoriais <span>3</span></a></li>
+            
+        </ul>
+    </div>
+</div>
+<!-- /category widget -->
+
+<!-- post widget -->
+<div class="aside-widget">
+    <div class="section-title">
+        <h2 class="title">Postagens recentes</h2>
+    </div>
+    <!-- post -->
+    <!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/19/adicionar-video-no-post.html"><img src="/projetokube-site/assets/img/blog/video.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/tutoriais">tutoriais</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/19/adicionar-video-no-post.html">Como adicionar um vídeo num post do blog</a></h3></div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/11/como-criar-uma-publicacao-no-blog.html"><img src="/projetokube-site/assets/img/blog/github-projetokube-site.png" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/tutoriais">tutoriais</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/11/como-criar-uma-publicacao-no-blog.html">Como criar uma publicação no blog</a></h3></div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html"><img src="/projetokube-site/assets/img/blog/github-projetokube-site.png" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/tutoriais">tutoriais</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/11/configuracao-deploy-site.html">Como implantar o site do Projeto Kube</a></h3></div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/08/o-que-e-o-git.html"><img src="/projetokube-site/assets/img/blog/o-que-e-git-print-1.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/git">git</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/08/o-que-e-o-git.html">O que é o git?</a></h3></div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/08/exemplo-no-final-das-contas-o-que-e-o-docker-e-como-ele-funciona.html"><img src="/projetokube-site/assets/img/blog/docker.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/devops">devops</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/08/exemplo-no-final-das-contas-o-que-e-o-docker-e-como-ele-funciona.html">No final das contas: o que é o Docker e como ele funciona?</a></h3></div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/08/exemplo-instalacao-do-script-do-raspberry-no-windows.html"><img src="/projetokube-site/assets/img/blog/raspberry-2.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/devops">devops</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/08/exemplo-instalacao-do-script-do-raspberry-no-windows.html">Instalação do Script do Raspberry no Windows</a></h3></div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/01/exemplo-containers-docker-com-raspberry-pi.html"><img src="/projetokube-site/assets/img/blog/raspberry.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/linux">linux</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/01/exemplo-containers-docker-com-raspberry-pi.html">Execução de containers Docker com Raspberry Pi</a></h3></div>
+</div>
+<!-- /post --><!-- Página responsável por mostrar os cards das publicações -->
+<!-- post -->
+<div class="post post-widget">
+    <a class="post-img" href="/projetokube-site/blog/2019/11/01/acesso-lab-pesquisa.html"><img src="/projetokube-site/assets/img/lab/1.jpg" alt=""></a>
+    <div class="post-body">
+        <div class="post-category"><a href="/projetokube-site/category/acesso">acesso</a></div><h3 class="post-title"><a href="/projetokube-site/blog/2019/11/01/acesso-lab-pesquisa.html">Acesso ao laboratório de pesquisa</a></h3></div>
+</div>
+<!-- /post -->
+</div>
+<!-- /post widget --></div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+    </div>
+    <footer class="site-footer">
+    <p class="text">
+        Powered by <a href="https://jekyllrb.com/">Jekyll</a> com o tema <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+<li>
+	<a href="/projetokube-site/feed.xml" title="Follow RSS feed">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/CBSIIFSLagarto/projetokube-site" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+    <script src="/projetokube-site/assets/js/vendor/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="/projetokube-site/assets/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+
+<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
+<script defer=true src="/projetokube-site/assets/js/main.min.js"></script>
+
+<script type="text/javascript">
+    $().ready(function(){
+        $('[rel="tooltip"]').tooltip();
+
+        $('a.scroll-down').click(function(e){
+            e.preventDefault();
+            scroll_target = $(this).data('href');
+             $('html, body').animate({
+                 scrollTop: $(scroll_target).offset().top - 60
+             }, 1000);
+        });
+
+    });
+
+    function rotateCard(btn){
+        var $card = $(btn).closest('.card-container');
+        console.log($card);
+        if($card.hasClass('hover')){
+            $card.removeClass('hover');
+        } else {
+            $card.addClass('hover');
+        }
+	}
+</script>
+<!-- Jekyll Ideal Image Slider Include -->
+<!-- https://github.com/jekylltools/jekyll-ideal-image-slider-include -->
+<!-- v1.8 -->
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+  </body>
+</html>
